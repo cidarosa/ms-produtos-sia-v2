@@ -2,7 +2,6 @@ package br.com.fiap.ms_produto.service;
 
 import br.com.fiap.ms_produto.dto.CategoriaDTO;
 import br.com.fiap.ms_produto.dto.ProdutoDTO;
-import br.com.fiap.ms_produto.dto.ProdutoResponseDTO;
 import br.com.fiap.ms_produto.entities.Categoria;
 import br.com.fiap.ms_produto.repositories.CategoriaRepository;
 import br.com.fiap.ms_produto.service.exceptions.DatabaseException;

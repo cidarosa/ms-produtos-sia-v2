@@ -2,7 +2,6 @@ package br.com.fiap.ms_produto.controller;
 
 import br.com.fiap.ms_produto.dto.CategoriaDTO;
 import br.com.fiap.ms_produto.dto.ProdutoDTO;
-import br.com.fiap.ms_produto.dto.ProdutoResponseDTO;
 import br.com.fiap.ms_produto.service.CategoriaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
