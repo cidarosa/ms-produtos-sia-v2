@@ -1,5 +1,6 @@
 package br.com.fiap.ms_produto.controller;
 
+import br.com.fiap.ms_produto.dto.ProdutoDTO;
 import br.com.fiap.ms_produto.dto.ProdutoRequestDTO;
 import br.com.fiap.ms_produto.dto.ProdutoResponseDTO;
 import br.com.fiap.ms_produto.service.ProdutoService;
@@ -20,37 +21,37 @@ public class ProdutoController {
     private ProdutoService service;
 
     @GetMapping
-    public ResponseEntity<List<ProdutoResponseDTO>> findAll() {
+    public ResponseEntity<List<ProdutoDTO>> findAll() {
 
-        List<ProdutoResponseDTO> dto = service.findAll();
+        List<ProdutoDTO> dto = service.findAll();
         return ResponseEntity.ok(dto);
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProdutoResponseDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<ProdutoDTO> findById(@PathVariable Long id) {
 
-        ProdutoResponseDTO dto = service.findById(id);
+        ProdutoDTO dto = service.findById(id);
         return ResponseEntity.ok(dto);
     }
 
     @PostMapping
-    public ResponseEntity<ProdutoResponseDTO> insert(@Valid @RequestBody ProdutoRequestDTO requestDTO) {
+    public ResponseEntity<ProdutoDTO> insert(@Valid @RequestBody ProdutoDTO dto) {
 
-        ProdutoResponseDTO dto = service.insert(requestDTO);
+         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")
-                .buildAndExpand(dto.id())
+                .buildAndExpand(dto.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(dto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProdutoResponseDTO> update(@PathVariable Long id,
-                                                     @Valid @RequestBody ProdutoRequestDTO requestDTO) {
+    public ResponseEntity<ProdutoDTO> update(@PathVariable Long id,
+                                                     @Valid @RequestBody ProdutoDTO dto) {
 
-        ProdutoResponseDTO dto = service.update(id, requestDTO);
+         dto = service.update(id, dto);
         return ResponseEntity.ok(dto);
     }
 
