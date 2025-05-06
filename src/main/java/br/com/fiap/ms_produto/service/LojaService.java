@@ -56,7 +56,7 @@ public class LojaService {
     }
 
     @Transactional
-    private void deleteById(Long id){
+    public void delete(Long id){
 
         if(!repository.existsById(id)){
             throw new ResourceNotFoundException("Recurso não encontrado. Id: " + id);
