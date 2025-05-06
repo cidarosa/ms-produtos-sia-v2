@@ -1,6 +1,7 @@
 package br.com.fiap.ms_produto.service;
 
 import br.com.fiap.ms_produto.dto.LojaDTO;
+import br.com.fiap.ms_produto.dto.ProdutoDTO;
 import br.com.fiap.ms_produto.entities.Loja;
 import br.com.fiap.ms_produto.repositories.LojaRepository;
 import br.com.fiap.ms_produto.service.exceptions.ResourceNotFoundException;
@@ -16,6 +17,17 @@ public class LojaService {
 
     @Autowired
     private LojaRepository repository;
+
+    @Transactional(readOnly = true)
+    public List<ProdutoDTO> findProdutosByLoja(Long lojaID){
+
+        Loja entity = repository.findById(lojaID).orElseThrow(
+
+                () -> new ResourceNotFoundException("Recurso não encontrado. ID: " + lojaID)
+        );
+
+        return entity.getProdutos().stream().map(ProdutoDTO::new).toList();
+    }
 
     @Transactional(readOnly = true)
     public List<LojaDTO> findAllL() {
