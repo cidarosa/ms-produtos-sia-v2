@@ -1,6 +1,7 @@
 package br.com.fiap.ms_produto.controller;
 
 import br.com.fiap.ms_produto.dto.CategoriaDTO;
+import br.com.fiap.ms_produto.dto.ProdutoDTO;
 import br.com.fiap.ms_produto.dto.ProdutoResponseDTO;
 import br.com.fiap.ms_produto.service.CategoriaService;
 import jakarta.validation.Valid;
@@ -20,9 +21,9 @@ public class CategoriaController {
     private CategoriaService service;
 
     @GetMapping("/{id}/produtos")
-    public ResponseEntity<List<ProdutoResponseDTO>> findProdutosByCategoria(@PathVariable Long id){
+    public ResponseEntity<List<ProdutoDTO>> findProdutosByCategoria(@PathVariable Long id){
 
-        List<ProdutoResponseDTO> list = service.findProdutosByCategoria(id);
+        List<ProdutoDTO> list = service.findProdutosByCategoria(id);
         return ResponseEntity.ok(list);
     }
 
